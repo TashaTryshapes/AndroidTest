@@ -1,9 +1,11 @@
 package com.tw.androidtask
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
     private var inputValueList: ArrayList<String> = ArrayList()
@@ -14,16 +16,19 @@ class MainActivity : AppCompatActivity() {
 
         btnAddToiIst.setOnClickListener {
             val addvalue = edtAddLIst.text.toString()
-            if (addvalue.isNotEmpty() && !addvalue.contains(addvalue)) {
-                inputValueList.add(addvalue)
-                Toast.makeText(this, "Value Added", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Value Already existed", Toast.LENGTH_SHORT).show()
+            if (addvalue.isNotEmpty()) {
+                if (!inputValueList.contains(addvalue)) {
+                    inputValueList.add(addvalue)
+                    Toast.makeText(this, "Value Added", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Value Already existed", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
         btnReplace.setOnClickListener {
-            replaceMethod()
+            val replace = edtReplace.text.toString()
+            replaceMethod(replace)
         }
 
         btnPrint.setOnClickListener {
@@ -32,15 +37,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun replaceMethod() {
-        val str = "abc pradeep 123"
-        val replaceChar = str.split(" ").toTypedArray()
+    private fun replaceMethod(replace: String) {
+        val replaceChar = replace.split(" ").toTypedArray()
         for (i in replaceChar.indices) {
             if (replaceChar[i].contains(" ")) {
                 replaceChar[i] = "*"
             }
         }
-        val str1 = StringBuilder(replaceChar.toString())
+        val str1 = StringBuilder()
+        for (entity in replaceChar) {
+            str1.append(entity)
+        }
         edtReplace.setText(str1)
     }
 
