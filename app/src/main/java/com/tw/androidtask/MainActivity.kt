@@ -39,8 +39,11 @@ class MainActivity : AppCompatActivity() {
         reverseNumber(1568)
 
         isPerfectNumber(6)
+
         armstrongNumber(153)
+
         splitInt(257)
+
         splitIntTwo(256)
     }
 
@@ -122,20 +125,20 @@ class MainActivity : AppCompatActivity() {
         while (num != 0) {
             val remainder = num % 10
             list.add(remainder)
-            num = num / 10
+            num /= 10
         }
         for (i in list.indices) {
-            result = result + list[i]
+            result += list[i]
         }
         return result
     }
 
-
-    fun splitIntTwo(num: Int): Int {
+    fun splitIntTwo(number: Int): Int {
+        var num = number
         var result = 0
         while (num != 0) {
-            val remainder = (num % 10)
-            result += (remainder * remainder * remainder)
+            val remainder = num % 10
+            result += remainder
             num /= 10
         }
         return result
