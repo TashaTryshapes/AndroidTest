@@ -37,6 +37,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         reverseNumber(1568)
+
+        isPerfectNumber(6)
     }
 
     private fun replaceMethod(replace: String) {
@@ -73,5 +75,21 @@ class MainActivity : AppCompatActivity() {
             number = number / 10
         }
         println(reverse)
+    }
+
+    private fun isPerfectNumber(number: Long): Int {
+        var prime = 0
+        for (i in 1..number) {
+            if (number % i == 0L) {
+                if (i != number) {
+                    prime = (prime + i).toInt()
+                }
+            }
+        }
+        return if (prime.toLong() == number) {
+            1
+        } else {
+            0
+        }
     }
 }

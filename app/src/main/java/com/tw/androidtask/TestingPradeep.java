@@ -67,4 +67,20 @@ public class TestingPradeep {
         }
         System.out.println(finalResult);
     }
+
+    static int isPerfectNumber(Long number) {
+        int prime = 0;
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) {
+                if (i != number) {
+                    prime = prime + i;
+                }
+            }
+        }
+        if (prime == number) {
+            return 1;
+        }else {
+            return 0;
+        }
+    }
 }
