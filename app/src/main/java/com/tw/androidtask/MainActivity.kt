@@ -39,6 +39,9 @@ class MainActivity : AppCompatActivity() {
         reverseNumber(1568)
 
         isPerfectNumber(6)
+        armstrongNumber(153)
+        splitInt(257)
+        splitIntTwo(256)
     }
 
     private fun replaceMethod(replace: String) {
@@ -91,5 +94,50 @@ class MainActivity : AppCompatActivity() {
         } else {
             0
         }
+    }
+
+    fun armstrongNumber(n: Int): String? {
+        // code here
+
+        // code here
+        var result = 0
+
+        val number = n.toString()
+        for (i in 0 until number.length) {
+            val j = number[i].digitToIntOrNull() ?: -1
+            result = j * j * j + result
+        }
+        return if (result == n) {
+            "Yes"
+        } else {
+            "No"
+        }
+    }
+
+    fun splitInt(num: Int): Int {
+        // code here
+        var num = num
+        var result = 0
+        val list: MutableList<Int> = java.util.ArrayList()
+        while (num != 0) {
+            val remainder = num % 10
+            list.add(remainder)
+            num = num / 10
+        }
+        for (i in list.indices) {
+            result = result + list[i]
+        }
+        return result
+    }
+
+
+    fun splitIntTwo(num: Int): Int {
+        var result = 0
+        while (num != 0) {
+            val remainder = (num % 10)
+            result += (remainder * remainder * remainder)
+            num /= 10
+        }
+        return result
     }
 }

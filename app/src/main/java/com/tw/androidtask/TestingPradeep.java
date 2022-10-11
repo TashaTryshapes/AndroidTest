@@ -79,8 +79,35 @@ public class TestingPradeep {
         }
         if (prime == number) {
             return 1;
-        }else {
+        } else {
             return 0;
         }
+    }
+
+    static String armstrongNumber(int n) {
+        // code here
+        int result = 0;
+
+        String number = String.valueOf(n);
+        for (int i = 0; i < number.length(); i++) {
+            int j = Character.digit(number.charAt(i), 10);
+            result = j * j * j + result;
+        }
+        if (result == n) {
+            return "Yes";
+        } else {
+            return "No";
+        }
+    }
+
+    //256
+    static int splitInt(int num) {
+        int result = 0;
+        while (num != 0) {
+            int remainder = (num % 10);
+            result = result + remainder;
+            num = num / 10;
+        }
+        return result;
     }
 }
